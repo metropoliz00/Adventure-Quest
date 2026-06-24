@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Adventure Quest SD",
+  "description": "Petualangan interaktif untuk UPT SD Negeri Remen 2.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
