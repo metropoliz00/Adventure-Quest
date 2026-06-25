@@ -54,17 +54,16 @@ export const SUBJECTS_DATA: Record<string, SubjectData> = {
           },
           {
             id: 5,
-            type: 'drag_drop',
-            question: 'Urutkanlah langkah-langkah melakukan teknik dasar Menyundul Bola (Heading) yang aman dan efektif dalam sepak bola dari awal sampai akhir!',
-            options: [],
-            answer: 0,
-            dragItems: [
-              'Menyundul bola tepat pada dahi sambil mengencangkan otot leher',
-              'Melompat atau bersiap dengan posisi mata terbuka fokus pada arah bola datang',
-              'Mendarat dengan kedua lutut mengeper elastis untuk meredam benturan'
+            type: 'pilihan_ganda',
+            question: 'Manakah urutan langkah-langkah melakukan teknik dasar Menyundul Bola (Heading) yang paling aman dan efektif?',
+            options: [
+              'Fokus arah bola - menyundul dengan dahi - mendarat dengan lutut mengeper',
+              'Menyundul dengan dahi - melompat - mendarat dengan kaki lurus',
+              'Mendarat dengan lutut - fokus arah bola - menyundul dengan dahi',
+              'Melompat - mendarat - baru menyundul bola dengan ubun-ubun'
             ],
-            correctOrder: [1, 0, 2],
-            explanation: 'Langkah aman menyundul bola: bersiap/melompat fokus ke bola (1), sundul menggunakan dahi dibantu otot leher (0), lalu mendarat dengan lutut mengeper (2) untuk menghindari cedera sendi.'
+            answer: 0,
+            explanation: 'Langkah aman menyundul bola: bersiap/melompat fokus ke bola, sundul menggunakan dahi dibantu otot leher, lalu mendarat dengan lutut mengeper untuk menghindari cedera.'
           }
         ]
       },
@@ -296,18 +295,16 @@ export const SUBJECTS_DATA: Record<string, SubjectData> = {
           },
           {
             id: 5,
-            type: 'drag_drop',
-            question: 'Seorang arkeolog menemukan fosil purba baru di lapangan. Urutkan tahapan metode ilmiah arkeologi berikut dari awal penemuan hingga siap dikomunikasikan kepada masyarakat luas!',
-            options: [],
-            answer: 0,
-            dragItems: [
-              'Ekskavasi (penggalian area situs secara hati-hati) dan pencatatan koordinat temuan',
-              'Konservasi laboratorium (pembersihan fosil dan pengawetan bahan organik)',
-              'Analisis penanggalan karbon (menentukan usia fosil) dan rekonstruksi anatomi',
-              'Disseminasi publik (pameran edukatif di museum dan penerbitan laporan ilmiah)'
+            type: 'pilihan_ganda',
+            question: 'Manakah urutan tahapan metode ilmiah arkeologi yang benar dari awal penemuan fosil hingga siap dipamerkan di museum?',
+            options: [
+              'Ekskavasi -> Konservasi -> Analisis -> Disseminasi publik',
+              'Disseminasi -> Ekskavasi -> Analisis -> Konservasi',
+              'Konservasi -> Analisis -> Ekskavasi -> Disseminasi publik',
+              'Analisis -> Konservasi -> Disseminasi -> Ekskavasi'
             ],
-            correctOrder: [0, 1, 2, 3],
-            explanation: 'Metode arkeologi yang logis: Penggalian situs (0) -> Pembersihan & Pengawetan (1) -> Penentuan Usia & Rekonstruksi (2) -> Pameran Edukatif Museum (3).'
+            answer: 0,
+            explanation: 'Metode arkeologi yang logis dimulai dari Penggalian situs (Ekskavasi), Pembersihan & Pengawetan (Konservasi), Penentuan Usia & Rekonstruksi (Analisis), hingga Pameran Edukatif Museum (Disseminasi).'
           }
         ]
       },
@@ -539,19 +536,16 @@ export const SUBJECTS_DATA: Record<string, SubjectData> = {
           },
           {
             id: 5,
-            type: 'drag_drop',
-            question: 'Sebagai warga negara yang baik, kita memiliki tanggung jawab sosial di berbagai jenjang. Urutkanlah lingkup pengamalan nilai-nilai Pancasila mulai dari unit terkecil (mikro) hingga unit terbesar (makro) dalam kehidupan sehari-hari!',
-            options: [],
-            answer: 0,
-            dragItems: [
-              'Lingkup Diri Sendiri (menjaga integritas, disiplin, dan kejujuran pribadi)',
-              'Lingkup Keluarga (membantu orang tua dan menghormati kakak/adik di rumah)',
-              'Lingkup Sekolah dan Kelas (bekerja sama piket kelas dan toleransi antarteman)',
-              'Lingkup Masyarakat RT/Desa (aktif gotong royong warga dan menjaga ketertiban)',
-              'Lingkup Negara dan Global (mematuhi undang-undang nasional dan mencintai produk lokal)'
+            type: 'pilihan_ganda',
+            question: 'Manakah urutan lingkup pengamalan nilai-nilai Pancasila yang benar mulai dari unit terkecil hingga unit terbesar?',
+            options: [
+              'Diri Sendiri -> Keluarga -> Sekolah -> Masyarakat -> Negara',
+              'Negara -> Masyarakat -> Sekolah -> Keluarga -> Diri Sendiri',
+              'Keluarga -> Sekolah -> Diri Sendiri -> Masyarakat -> Negara',
+              'Sekolah -> Diri Sendiri -> Keluarga -> Negara -> Masyarakat'
             ],
-            correctOrder: [0, 1, 2, 3, 4],
-            explanation: 'Urutan pengamalan nilai yang logis dari lingkup terkecil ke terbesar adalah: Diri Sendiri (0) -> Keluarga (1) -> Sekolah/Kelas (2) -> Masyarakat/Desa (3) -> Negara/Global (4).'
+            answer: 0,
+            explanation: 'Urutan pengamalan nilai yang logis dimulai dari Diri Sendiri, kemudian Keluarga, Sekolah/Kelas, Masyarakat/Desa, dan terakhir lingkup Negara/Global.'
           }
         ]
       },
@@ -783,19 +777,16 @@ export const SUBJECTS_DATA: Record<string, SubjectData> = {
           },
           {
             id: 5,
-            type: 'drag_drop',
-            question: 'Urutkanlah nilai pecahan berikut ini mulai dari yang nilainya paling KECIL hingga yang paling BESAR secara analitis!',
-            options: [],
-            answer: 0,
-            dragItems: [
-              '1/8 (setara 0,125)',
-              '1/4 (setara 0,25)',
-              '2/5 (setara 0,4)',
-              '1/2 (setara 0,5)',
-              '3/4 (setara 0,75)'
+            type: 'pilihan_ganda',
+            question: 'Manakah urutan pecahan berikut ini yang benar mulai dari nilai yang paling KECIL ke yang paling BESAR?',
+            options: [
+              '1/8, 1/4, 2/5, 1/2, 3/4',
+              '3/4, 1/2, 2/5, 1/4, 1/8',
+              '1/2, 1/4, 1/8, 2/5, 3/4',
+              '1/4, 1/8, 1/2, 3/4, 2/5'
             ],
-            correctOrder: [0, 1, 2, 3, 4],
-            explanation: 'Dengan mengubahnya ke desimal, kita dapat dengan mudah mengurutkan nilainya: 1/8 (0,125) < 1/4 (0,25) < 2/5 (0,4) < 1/2 (0,5) < 3/4 (0,75).'
+            answer: 0,
+            explanation: 'Dalam bentuk desimal: 1/8 (0,125), 1/4 (0,25), 2/5 (0,4), 1/2 (0,5), dan 3/4 (0,75). Jadi urutannya adalah 1/8 < 1/4 < 2/5 < 1/2 < 3/4.'
           }
         ]
       },
@@ -1027,18 +1018,16 @@ export const SUBJECTS_DATA: Record<string, SubjectData> = {
           },
           {
             id: 5,
-            type: 'drag_drop',
-            question: 'Untuk memahami isi buku ilmiah dengan kritis, kita sering kali perlu meringkasnya. Urutkanlah langkah-langkah metodologis menyusun ringkasan (sinopsis) teks yang baik dan terstruktur dari awal hingga akhir!',
-            options: [],
-            answer: 0,
-            dragItems: [
-              'Membaca keseluruhan teks asli secara mendalam untuk menangkap impresi umum penulis',
-              'Mencatat kalimat utama dan ide-ide pokok pada setiap paragraf teks',
-              'Menyusun kembali ide-ide pokok tersebut menggunakan bahasa sendiri yang efektif dan padat',
-              'Membandingkan hasil ringkasan dengan teks asli serta menyunting kesalahan ejaan (PUEBI)'
+            type: 'pilihan_ganda',
+            question: 'Urutan langkah-langkah yang benar dalam menyusun ringkasan (sinopsis) teks yang baik adalah...',
+            options: [
+              'Membaca teks utuh -> Mencatat ide pokok -> Menulis dengan bahasa sendiri -> Menyunting ejaan',
+              'Menyunting ejaan -> Mencatat ide pokok -> Membaca teks utuh -> Menulis dengan bahasa sendiri',
+              'Mencatat ide pokok -> Membaca teks utuh -> Menyunting ejaan -> Menulis dengan bahasa sendiri',
+              'Menulis dengan bahasa sendiri -> Membaca teks utuh -> Mencatat ide pokok -> Menyunting ejaan'
             ],
-            correctOrder: [0, 1, 2, 3],
-            explanation: 'Urutan meringkas yang benar: Membaca teks secara utuh (0) -> Mencatat ide pokok (1) -> Merekonstruksi dengan bahasa sendiri (2) -> Membandingkan & Menyunting ejaan (3).'
+            answer: 0,
+            explanation: 'Langkah meringkas yang benar adalah: Membaca teks secara utuh, Mencatat ide pokok, Merekonstruksi dengan bahasa sendiri, lalu Membandingkan & Menyunting ejaan.'
           }
         ]
       },
@@ -1270,19 +1259,16 @@ export const SUBJECTS_DATA: Record<string, SubjectData> = {
           },
           {
             id: 5,
-            type: 'drag_drop',
-            question: 'Urutkanlah transliterasi potongan ayat Surah Al-Ma\'un berikut ini secara berurutan sesuai urutan ayat yang benar (dari ayat 1 hingga ayat 5)!',
-            options: [],
-            answer: 0,
-            dragItems: [
-              'Ara\'aital-ladzi yukadzdzibu bid-din',
-              'Fadhalikal-ladzi yadu\'\'ul-yatim',
-              'Wa la yahudh-dhu \'ala tha\'amil-miskin',
-              'Fa-wailul lil-mushallin',
-              'Al-ladzina hum \'an shalatihim sahun'
+            type: 'pilihan_ganda',
+            question: 'Manakah urutan awal ayat Surah Al-Ma\'un yang benar dari ayat 1 sampai ayat 3?',
+            options: [
+              'Ara\'aital-ladzi... -> Fadhalikal-ladzi... -> Wa la yahudh-dhu...',
+              'Fadhalikal-ladzi... -> Ara\'aital-ladzi... -> Wa la yahudh-dhu...',
+              'Wa la yahudh-dhu... -> Fadhalikal-ladzi... -> Ara\'aital-ladzi...',
+              'Ara\'aital-ladzi... -> Wa la yahudh-dhu... -> Fadhalikal-ladzi...'
             ],
-            correctOrder: [0, 1, 2, 3, 4],
-            explanation: 'Urutan ayat 1 sampai 5 Surah Al-Ma\'un yang benar adalah: Ara\'aital-ladzi... (0) -> Fadhalikal-ladzi... (1) -> Wa la yahudh-dhu... (2) -> Fa-wailul... (3) -> Al-ladzina hum \'an... (4).'
+            answer: 0,
+            explanation: 'Urutan ayat Surah Al-Ma\'un dimulai dari: (1) Ara\'aital-ladzi yukadzdzibu bid-din, (2) Fadhalikal-ladzi yadu\'\'ul-yatim, (3) Wa la yahudh-dhu \'ala tha\'amil-miskin.'
           }
         ]
       },
@@ -1514,19 +1500,16 @@ export const SUBJECTS_DATA: Record<string, SubjectData> = {
           },
           {
             id: 5,
-            type: 'drag_drop',
-            question: 'Arrange the scrambled words below in the correct syntactic order to form a grammatically perfect Present Continuous sentence!',
-            options: [],
-            answer: 0,
-            dragItems: [
-              'Our smart students',
-              'are',
-              'studying',
-              'English grammar',
-              'together in the classroom'
+            type: 'pilihan_ganda',
+            question: 'What is the correct sentence order for: "studying - are - Our smart students - together in the classroom - English grammar"?',
+            options: [
+              'Our smart students are studying English grammar together in the classroom.',
+              'English grammar are studying our smart students together in the classroom.',
+              'Our smart students studying are English grammar together in the classroom.',
+              'Together in the classroom studying are English grammar our smart students.'
             ],
-            correctOrder: [0, 1, 2, 3, 4],
-            explanation: 'The correct structural order for Present Continuous is: Subject (0) + Auxiliary "are" (1) + Verb-ing "studying" (2) + Object (3) + Adverb of place/manner (4).'
+            answer: 0,
+            explanation: 'The correct Present Continuous structure is: Subject (Our smart students) + are + Verb-ing (studying) + Object (English grammar) + Adverb (together in the classroom).'
           }
         ]
       },
@@ -1758,19 +1741,16 @@ export const SUBJECTS_DATA: Record<string, SubjectData> = {
           },
           {
             id: 5,
-            type: 'drag_drop',
-            question: 'Urutna silsilah sedulur Pandhawa ing ngisor iki wiwit saka sing paling tuwa (Mbarep) nganti sing paling enom (Ragil)!',
-            options: [],
-            answer: 0,
-            dragItems: [
-              'Raden Puntadewa (Yudhistira)',
-              'Raden Werkudara (Bima)',
-              'Raden Janaka (Arjuna)',
-              'Raden Nakula',
-              'Raden Sadewa'
+            type: 'pilihan_ganda',
+            question: 'Urutan sedulur Pandhawa wiwit saka sing paling tuwa (Mbarep) nganti sing paling enom (Ragil) sing bener yaiku...',
+            options: [
+              'Puntadewa - Werkudara - Arjuna - Nakula - Sadewa',
+              'Arjuna - Puntadewa - Werkudara - Nakula - Sadewa',
+              'Werkudara - Arjuna - Puntadewa - Nakula - Sadewa',
+              'Puntadewa - Arjuna - Werkudara - Sadewa - Nakula'
             ],
-            correctOrder: [0, 1, 2, 3, 4],
-            explanation: 'Urutan sedulur Pandhawa sing bener yaiku: Puntadewa (1), Werkudara (2), Arjuna (3), Nakula (4), lan Sadewa (5).'
+            answer: 0,
+            explanation: 'Sedulur Pandhawa cacahe lima, urutane yaiku: (1) Puntadewa, (2) Werkudara, (3) Arjuna, (4) Nakula, lan (5) Sadewa.'
           }
         ]
       },
@@ -2002,18 +1982,16 @@ export const SUBJECTS_DATA: Record<string, SubjectData> = {
           },
           {
             id: 5,
-            type: 'drag_drop',
-            question: 'Urutkan tingkatan pembentukan warna dalam seni rupa mulai dari warna paling dasar (induk warna) hingga kelompok warna penunjangnya!',
-            options: [],
-            answer: 0,
-            dragItems: [
-              'Warna Primer (Merah, Kuning, Biru - pigmen murni tanpa campuran)',
-              'Warna Sekunder (Jingga, Hijau, Ungu - hasil campuran dua warna primer)',
-              'Warna Tersier (Cokelat kemerahan, cokelat kekuningan - campuran primer + sekunder)',
-              'Warna Netral (Hitam, Putih, Abu-abu - untuk mengatur gelap terang / value)'
+            type: 'pilihan_ganda',
+            question: 'Manakah urutan tingkatan pembentukan warna yang benar dalam seni rupa?',
+            options: [
+              'Warna Primer -> Warna Sekunder -> Warna Tersier -> Warna Netral',
+              'Warna Netral -> Warna Primer -> Warna Sekunder -> Warna Tersier',
+              'Warna Sekunder -> Warna Primer -> Warna Tersier -> Warna Netral',
+              'Warna Primer -> Warna Tersier -> Warna Sekunder -> Warna Netral'
             ],
-            correctOrder: [0, 1, 2, 3],
-            explanation: 'Urutan hierarki penciptaan warna: Primer (0) -> Sekunder (1) -> Tersier (2) -> Netral (3).'
+            answer: 0,
+            explanation: 'Hierarki warna dimulai dari Warna Primer (dasar), kemudian Warna Sekunder (campuran primer), Warna Tersier (campuran primer + sekunder), dan Warna Netral.'
           }
         ]
       },
