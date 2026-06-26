@@ -274,7 +274,7 @@ export default function QuizModal({
   const progressPercent = (timeLeft / maxTime) * 100;
 
   return (
-    <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center z-50 p-4 landscape:p-2 sm:p-4">
+    <div className="fixed inset-0 bg-slate-950 flex items-center justify-center z-50 p-0 md:p-4">
       <AnimatePresence mode="wait">
         {!showSummary ? (
           <motion.div
@@ -282,7 +282,7 @@ export default function QuizModal({
             initial={{ scale: 0.9, opacity: 0, y: 30 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: -30 }}
-            className="w-full max-w-7xl h-[95vh] landscape:h-[96vh] md:h-auto md:aspect-[16/9] md:min-h-[680px] md:max-h-[85vh] bg-slate-900 border-4 border-amber-500/80 rounded-3xl overflow-hidden shadow-2xl relative flex flex-col"
+            className="w-full h-full md:h-auto md:aspect-[16/9] md:min-h-[680px] md:max-h-[85vh] md:max-w-7xl bg-slate-900 border-0 md:border-4 md:border-amber-500/80 rounded-none md:rounded-3xl overflow-hidden shadow-2xl relative flex flex-col"
           >
             {/* Star effect layers */}
             {stars.map((star) => (
@@ -779,7 +779,7 @@ export default function QuizModal({
             initial={{ scale: 0.9, opacity: 0, y: 30 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: -30 }}
-            className="w-full max-w-md landscape:max-w-3xl bg-slate-900 border-4 border-amber-500 rounded-3xl overflow-hidden shadow-2xl p-6 landscape:p-4 text-center max-h-[96vh] overflow-y-auto"
+            className="w-[92vw] max-w-md landscape:max-w-3xl bg-slate-900 border-4 border-amber-500 rounded-3xl overflow-hidden shadow-2xl p-6 landscape:p-4 text-center max-h-[96vh] overflow-y-auto"
           >
             {(() => {
               const passed = correctCount >= settings.passingCorrectCount;
