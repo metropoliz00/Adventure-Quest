@@ -282,7 +282,7 @@ export default function QuizModal({
             initial={{ scale: 0.9, opacity: 0, y: 30 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: -30 }}
-            className="w-full max-w-7xl md:aspect-[16/9] md:min-h-[680px] md:max-h-[85vh] bg-slate-900 border-4 border-amber-500/80 rounded-3xl overflow-hidden shadow-2xl relative flex flex-col"
+            className="w-full max-w-7xl h-[95vh] md:h-auto md:aspect-[16/9] md:min-h-[680px] md:max-h-[85vh] bg-slate-900 border-4 border-amber-500/80 rounded-3xl overflow-hidden shadow-2xl relative flex flex-col"
           >
             {/* Star effect layers */}
             {stars.map((star) => (
@@ -298,7 +298,7 @@ export default function QuizModal({
             ))}
 
             {/* Quiz Header */}
-            <div className="bg-gradient-to-r from-blue-950 to-slate-900 p-5 border-b-2 border-slate-800 flex items-center justify-between shrink-0">
+            <div className="bg-gradient-to-r from-blue-950 to-slate-900 p-3 sm:p-5 border-b-2 border-slate-800 flex items-center justify-between shrink-0">
               <div className="flex items-center gap-2.5">
                 <div className="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center text-xl shadow-inner">
                   🎯
@@ -329,10 +329,10 @@ export default function QuizModal({
             </div>
 
             {/* Quiz Body with Landscape 16:9 2-column structure */}
-            <div className="flex-1 p-6 overflow-y-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+            <div className="flex-1 p-3 sm:p-6 overflow-y-auto grid grid-cols-1 landscape:grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-6 items-start">
               
               {/* Left Column: Metadata, Question Text & Explanation */}
-              <div className="space-y-4">
+              <div className="space-y-2 sm:space-y-4">
                 {/* Question metadata */}
                 <div className="flex justify-between items-center">
                   <span className="text-xs font-extrabold px-3 py-1 bg-blue-900/40 text-blue-300 border border-blue-800/50 rounded-full">
@@ -357,9 +357,9 @@ export default function QuizModal({
               </div>
 
               {/* Right Column: Options & Inputs Stack */}
-              <div className="space-y-4">
+              <div className="space-y-2.5 sm:space-y-4">
                 {(!currentQuestion.type || currentQuestion.type === 'pilihan_ganda') && (
-                  <div className="space-y-2.5">
+                  <div className="space-y-2 sm:space-y-2.5">
                     {currentQuestion.options.map((option, idx) => {
                       const isSelected = selectedOption === idx;
                       const isCorrectAnswer = currentQuestion.answer === idx;
@@ -373,7 +373,7 @@ export default function QuizModal({
                           whileTap={!isAnswered ? { scale: 0.99 } : {}}
                           onClick={() => handleOptionClick(idx)}
                           disabled={isAnswered}
-                          className={`w-full text-left p-3.5 rounded-2xl border-2 font-semibold text-xs transition-all flex items-center justify-between
+                          className={`w-full text-left p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border-2 font-semibold text-[11px] sm:text-xs transition-all flex items-center justify-between
                             ${!isAnswered 
                               ? 'bg-slate-800/50 text-slate-200 border-slate-700 hover:bg-slate-800 hover:border-amber-400/60' 
                               : showSuccess
@@ -430,7 +430,7 @@ export default function QuizModal({
                             whileTap={!isAnswered ? { scale: 0.99 } : {}}
                             onClick={() => handleComplexToggle(idx)}
                             disabled={isAnswered}
-                            className={`w-full text-left p-3.5 rounded-2xl border-2 font-semibold text-xs transition-all flex items-center justify-between
+                            className={`w-full text-left p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border-2 font-semibold text-[11px] sm:text-xs transition-all flex items-center justify-between
                               ${!!isAnswered 
                                 ? showSuccess
                                   ? 'bg-emerald-950/60 text-emerald-200 border-emerald-500'
@@ -495,7 +495,7 @@ export default function QuizModal({
                           whileTap={!isAnswered ? { scale: 0.97 } : {}}
                           onClick={() => handleOptionClick(idx)}
                           disabled={isAnswered}
-                          className={`h-32 rounded-2xl border-4 font-black text-base transition-all flex flex-col items-center justify-center gap-2.5 relative
+                          className={`h-20 sm:h-32 rounded-2xl border-4 font-black text-sm sm:text-base transition-all flex flex-col items-center justify-center gap-1.5 sm:gap-2.5 relative
                             ${!isAnswered 
                               ? isBenar
                                 ? 'bg-emerald-950/30 text-emerald-300 border-emerald-500/40 hover:bg-emerald-900/40 hover:border-emerald-400'
@@ -752,13 +752,13 @@ export default function QuizModal({
             </div>
 
             {/* Quiz Footer Buttons */}
-            <div className="p-5 bg-slate-950/50 border-t border-slate-800 flex justify-end shrink-0">
+            <div className="p-3 sm:p-5 bg-slate-950/50 border-t border-slate-800 flex justify-end shrink-0">
               {isAnswered ? (
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleNextQuestion}
-                  className="px-6 py-3 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-extrabold text-sm rounded-xl flex items-center gap-1.5 shadow-lg shadow-amber-500/20"
+                  className="px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl flex items-center gap-1.5 shadow-lg shadow-amber-500/20"
                 >
                   <span>
                     {currentQIndex < questions.length - 1 ? 'Soal Berikutnya' : 'Lihat Hasil Pos'}
@@ -766,7 +766,7 @@ export default function QuizModal({
                   <ChevronRight className="w-4 h-4" />
                 </motion.button>
               ) : (
-                <div className="text-xs text-slate-500 italic flex items-center gap-1 py-3">
+                <div className="text-[11px] sm:text-xs text-slate-500 italic flex items-center gap-1 py-1.5 sm:py-3">
                   Pilih salah satu jawaban sebelum waktu habis! ⏰
                 </div>
               )}
