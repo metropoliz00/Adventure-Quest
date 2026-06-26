@@ -141,18 +141,15 @@ export default function App() {
   };
 
   const handleKeyClick = async () => {
-    // Attempt to go fullscreen and landscape for mobile users
+    // Attempt to lock landscape for mobile users
     try {
-      if (document.documentElement.requestFullscreen) {
-        await document.documentElement.requestFullscreen();
-      }
       if (window.screen.orientation && (window.screen.orientation as any).lock) {
         await (window.screen.orientation as any).lock('landscape').catch(() => {
           // Ignore errors if orientation lock is not supported or requires manifest
         });
       }
     } catch (e) {
-      console.warn('Fullscreen/Orientation request failed', e);
+      console.warn('Orientation request failed', e);
     }
 
     if (!playerName.trim()) {

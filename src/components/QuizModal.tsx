@@ -779,7 +779,7 @@ export default function QuizModal({
             initial={{ scale: 0.9, opacity: 0, y: 30 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: -30 }}
-            className="w-full max-w-md bg-slate-900 border-4 border-amber-500 rounded-3xl overflow-hidden shadow-2xl p-6 text-center"
+            className="w-full max-w-md landscape:max-w-3xl bg-slate-900 border-4 border-amber-500 rounded-3xl overflow-hidden shadow-2xl p-6 landscape:p-4 text-center max-h-[96vh] overflow-y-auto"
           >
             {(() => {
               const passed = correctCount >= settings.passingCorrectCount;
@@ -787,78 +787,84 @@ export default function QuizModal({
               const minPointsRequired = settings.passingCorrectCount * 20;
               
               return (
-                <>
-                  <div className="flex justify-center mb-4">
-                    <div className="w-20 h-20 bg-amber-950/50 border-2 border-amber-500 rounded-full flex items-center justify-center text-5xl">
-                      {passed ? '🏆' : '💪'}
-                    </div>
-                  </div>
-
-                  <h3 className="text-2xl font-black text-white mb-1">
-                    {passed ? 'Pos Berhasil Dilewati!' : 'Tantangan Belum Lulus'}
-                  </h3>
-                  <p className="text-xs text-slate-400 mb-6">
-                    {level.title}
-                  </p>
-
-                  {/* Score box */}
-                  <div className="bg-slate-950/60 rounded-2xl p-4 border border-slate-800 max-w-xs mx-auto mb-6">
-                    <div className="grid grid-cols-2 gap-2 text-center divide-x divide-slate-800">
-                      <div>
-                        <div className="text-2xl font-black text-emerald-400">{correctCount} / {questions.length}</div>
-                        <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Benar</div>
-                      </div>
-                      <div>
-                        <div className="text-2xl font-black text-amber-400">{pointsVal}</div>
-                        <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Poin Skor</div>
+                <div className="grid grid-cols-1 landscape:grid-cols-12 gap-6 landscape:gap-4 items-center">
+                  {/* Left Column (Landscape): Trophy and Title */}
+                  <div className="landscape:col-span-5 flex flex-col items-center">
+                    <div className="flex justify-center mb-4 landscape:mb-2">
+                      <div className="w-20 h-20 landscape:w-16 landscape:h-16 bg-amber-950/50 border-2 border-amber-500 rounded-full flex items-center justify-center text-5xl landscape:text-4xl">
+                        {passed ? '🏆' : '💪'}
                       </div>
                     </div>
+
+                    <h3 className="text-2xl landscape:text-xl font-black text-white mb-1">
+                      {passed ? 'Pos Berhasil Dilewati!' : 'Tantangan Belum Lulus'}
+                    </h3>
+                    <p className="text-xs text-slate-400 mb-2 landscape:mb-0">
+                      {level.title}
+                    </p>
                   </div>
 
-                  {/* Message based on passing/failing */}
-                  {passed ? (
-                    <p className="text-xs text-emerald-300 mb-8 max-w-sm mx-auto leading-relaxed">
-                      🎉 Hebat! Kamu memperoleh <strong>{pointsVal} Poin</strong>. Kamu dinyatakan <strong>LULUS</strong> pos ini dan berhak melanjutkan petualangan ke pos selanjutnya!
-                    </p>
-                  ) : (
-                    <p className="text-xs text-red-300 mb-8 max-w-sm mx-auto leading-relaxed">
-                      ☹️ Kamu mendapatkan <strong>{pointsVal} Poin</strong>. Syarat minimal kelulusan untuk tantangan ini adalah <strong>{minPointsRequired} Poin</strong> ({settings.passingCorrectCount} soal benar). Ayo belajar lagi dan coba lagi pos ini!
-                    </p>
-                  )}
+                  {/* Right Column (Landscape): Score, Message, and Action Buttons */}
+                  <div className="landscape:col-span-7 flex flex-col justify-center w-full">
+                    {/* Score box */}
+                    <div className="bg-slate-950/60 rounded-2xl p-4 landscape:p-3 border border-slate-800 max-w-xs mx-auto w-full mb-4 landscape:mb-3">
+                      <div className="grid grid-cols-2 gap-2 text-center divide-x divide-slate-800">
+                        <div>
+                          <div className="text-2xl landscape:text-xl font-black text-emerald-400">{correctCount} / {questions.length}</div>
+                          <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Benar</div>
+                        </div>
+                        <div>
+                          <div className="text-2xl landscape:text-xl font-black text-amber-400">{pointsVal}</div>
+                          <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Poin Skor</div>
+                        </div>
+                      </div>
+                    </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex gap-3 justify-center">
-                    {!passed ? (
-                      <>
+                    {/* Message based on passing/failing */}
+                    {passed ? (
+                      <p className="text-xs text-emerald-300 mb-4 landscape:mb-3 max-w-sm mx-auto leading-relaxed">
+                        🎉 Hebat! Kamu memperoleh <strong>{pointsVal} Poin</strong>. Kamu dinyatakan <strong>LULUS</strong> pos ini dan berhak melanjutkan petualangan ke pos selanjutnya!
+                      </p>
+                    ) : (
+                      <p className="text-xs text-red-300 mb-4 landscape:mb-3 max-w-sm mx-auto leading-relaxed">
+                        ☹️ Kamu mendapatkan <strong>{pointsVal} Poin</strong>. Syarat minimal kelulusan untuk tantangan ini adalah <strong>{minPointsRequired} Poin</strong> ({settings.passingCorrectCount} soal benar). Ayo belajar lagi dan coba lagi pos ini!
+                      </p>
+                    )}
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-3 justify-center w-full">
+                      {!passed ? (
+                        <>
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={handleRetryLevel}
+                            className="flex-1 px-5 py-3.5 landscape:py-2.5 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black text-xs rounded-xl flex items-center justify-center gap-1.5 shadow"
+                          >
+                            <RefreshCw className="w-4 h-4" />
+                            <span>Ulangi Pos</span>
+                          </motion.button>
+                          <button
+                            onClick={onClose}
+                            className="px-5 py-3.5 landscape:py-2.5 bg-slate-800 text-slate-300 font-bold text-xs rounded-xl hover:bg-slate-700 transition"
+                          >
+                            Ke Peta
+                          </button>
+                        </>
+                      ) : (
                         <motion.button
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          onClick={handleRetryLevel}
-                          className="flex-1 px-5 py-3.5 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black text-xs rounded-xl flex items-center justify-center gap-1.5 shadow"
+                          onClick={handleFinishLevel}
+                          className="w-full px-6 py-3.5 landscape:py-2.5 bg-gradient-to-r from-emerald-400 to-emerald-500 text-slate-950 font-black text-sm landscape:text-xs rounded-xl shadow-lg flex items-center justify-center gap-1.5"
                         >
-                          <RefreshCw className="w-4 h-4" />
-                          <span>Ulangi Pos</span>
+                          <Award className="w-4 h-4" />
+                          <span>Selesaikan & Kembali</span>
                         </motion.button>
-                        <button
-                          onClick={onClose}
-                          className="px-5 py-3.5 bg-slate-800 text-slate-300 font-bold text-xs rounded-xl hover:bg-slate-700 transition"
-                        >
-                          Ke Peta
-                        </button>
-                      </>
-                    ) : (
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={handleFinishLevel}
-                        className="w-full px-6 py-3.5 bg-gradient-to-r from-emerald-400 to-emerald-500 text-slate-950 font-black text-sm rounded-xl shadow-lg flex items-center justify-center gap-1.5"
-                      >
-                        <Award className="w-4 h-4" />
-                        <span>Selesaikan & Kembali</span>
-                      </motion.button>
-                    )}
+                      )}
+                    </div>
                   </div>
-                </>
+                </div>
               );
             })()}
           </motion.div>
