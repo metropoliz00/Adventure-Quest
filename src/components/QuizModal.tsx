@@ -282,7 +282,7 @@ export default function QuizModal({
             initial={{ scale: 0.9, opacity: 0, y: 30 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: -30 }}
-            className="w-full max-w-7xl h-[95vh] md:h-auto md:aspect-[16/9] md:min-h-[680px] md:max-h-[85vh] bg-slate-900 border-4 border-amber-500/80 rounded-3xl overflow-hidden shadow-2xl relative flex flex-col"
+            className="w-full max-w-7xl h-[95vh] landscape:h-[95vh] landscape:aspect-[16/9] md:h-auto md:aspect-[16/9] md:min-h-[680px] md:max-h-[85vh] bg-slate-900 border-4 border-amber-500/80 rounded-3xl overflow-hidden shadow-2xl relative flex flex-col"
           >
             {/* Star effect layers */}
             {stars.map((star) => (
@@ -298,21 +298,21 @@ export default function QuizModal({
             ))}
 
             {/* Quiz Header */}
-            <div className="bg-gradient-to-r from-blue-950 to-slate-900 p-3 sm:p-5 border-b-2 border-slate-800 flex items-center justify-between shrink-0">
+            <div className="bg-gradient-to-r from-blue-950 to-slate-900 p-3 landscape:py-1.5 landscape:px-3 sm:p-5 border-b-2 border-slate-800 flex items-center justify-between shrink-0">
               <div className="flex items-center gap-2.5">
-                <div className="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center text-xl shadow-inner">
+                <div className="w-10 h-10 landscape:w-7 landscape:h-7 bg-amber-500 rounded-xl landscape:rounded-lg flex items-center justify-center text-xl landscape:text-sm shadow-inner">
                   🎯
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1">
+                  <h4 className="text-sm landscape:text-xs font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1">
                     <MapPin className="w-3.5 h-3.5" /> {level.title}
                   </h4>
-                  <p className="text-xs text-slate-300 font-medium">{level.topic}</p>
+                  <p className="text-xs landscape:text-[10px] text-slate-300 font-medium">{level.topic}</p>
                 </div>
               </div>
               <button
                 onClick={onClose}
-                className="text-slate-400 hover:text-white text-sm bg-slate-800 px-3 py-1 rounded-lg border border-slate-700 transition"
+                className="text-slate-400 hover:text-white text-sm landscape:text-xs bg-slate-800 px-3 py-1 landscape:py-0.5 rounded-lg border border-slate-700 transition"
               >
                 Kembali ke Peta
               </button>
@@ -329,27 +329,27 @@ export default function QuizModal({
             </div>
 
             {/* Quiz Body with Landscape 16:9 2-column structure */}
-            <div className="flex-1 p-3 sm:p-6 overflow-y-auto grid grid-cols-1 landscape:grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-6 items-start">
+            <div className="flex-1 p-3 landscape:p-2 sm:p-6 overflow-y-auto grid grid-cols-1 landscape:grid-cols-2 sm:grid-cols-2 gap-3 landscape:gap-2.5 sm:gap-6 items-start">
               
               {/* Left Column: Metadata, Question Text & Explanation */}
-              <div className="space-y-2 sm:space-y-4">
+              <div className="space-y-2 landscape:space-y-1.5 sm:space-y-4">
                 {/* Question metadata */}
                 <div className="flex justify-between items-center">
-                  <span className="text-xs font-extrabold px-3 py-1 bg-blue-900/40 text-blue-300 border border-blue-800/50 rounded-full">
+                  <span className="text-xs landscape:text-[10px] font-extrabold px-3 py-1 bg-blue-900/40 text-blue-300 border border-blue-800/50 rounded-full">
                     SOAL {currentQIndex + 1} DARI {questions.length}
                   </span>
                   
                   {/* Timer Box */}
-                  <div className={`flex items-center gap-1 px-3 py-1 rounded-full border font-bold text-xs ${
+                  <div className={`flex items-center gap-1 px-3 py-1 landscape:px-2 landscape:py-0.5 rounded-full border font-bold text-xs landscape:text-[10px] ${
                     timeLeft > 10 ? 'bg-slate-800 text-emerald-400 border-slate-700' : 'bg-red-950/80 text-red-300 border-red-800'
                   }`}>
-                    <Timer className="w-4 h-4" />
+                    <Timer className="w-4 h-4 landscape:w-3.5 landscape:h-3.5" />
                     <span>{timeLeft} DETIK</span>
                   </div>
                 </div>
 
                 {/* Question Text */}
-                <h3 className="text-base sm:text-lg font-extrabold text-white leading-relaxed bg-slate-950/30 p-4 rounded-2xl border border-slate-800/40 shadow-inner">
+                <h3 className="text-base landscape:text-xs sm:text-lg font-extrabold text-white leading-relaxed bg-slate-950/30 p-4 landscape:p-2.5 rounded-2xl landscape:rounded-xl border border-slate-800/40 shadow-inner">
                   {currentQuestion.question}
                 </h3>
 
@@ -357,9 +357,9 @@ export default function QuizModal({
               </div>
 
               {/* Right Column: Options & Inputs Stack */}
-              <div className="space-y-2.5 sm:space-y-4">
+              <div className="space-y-2.5 landscape:space-y-1.5 sm:space-y-4">
                 {(!currentQuestion.type || currentQuestion.type === 'pilihan_ganda') && (
-                  <div className="space-y-2 sm:space-y-2.5">
+                  <div className="space-y-2 landscape:space-y-1 sm:space-y-2.5">
                     {currentQuestion.options.map((option, idx) => {
                       const isSelected = selectedOption === idx;
                       const isCorrectAnswer = currentQuestion.answer === idx;
@@ -373,7 +373,7 @@ export default function QuizModal({
                           whileTap={!isAnswered ? { scale: 0.99 } : {}}
                           onClick={() => handleOptionClick(idx)}
                           disabled={isAnswered}
-                          className={`w-full text-left p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border-2 font-semibold text-[11px] sm:text-xs transition-all flex items-center justify-between
+                          className={`w-full text-left p-2.5 landscape:p-1.5 sm:p-3.5 rounded-xl landscape:rounded-lg sm:rounded-2xl border-2 font-semibold text-[11px] landscape:text-[10px] sm:text-xs transition-all flex items-center justify-between
                             ${!isAnswered 
                               ? 'bg-slate-800/50 text-slate-200 border-slate-700 hover:bg-slate-800 hover:border-amber-400/60' 
                               : showSuccess
@@ -384,7 +384,7 @@ export default function QuizModal({
                             }`}
                         >
                           <div className="flex items-center gap-2.5">
-                            <span className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-[10px] border ${
+                            <span className={`w-6 h-6 landscape:w-5 landscape:h-5 rounded-full flex items-center justify-center font-bold text-[10px] landscape:text-[9px] border ${
                               !isAnswered 
                                 ? 'bg-slate-700 text-slate-200 border-slate-600' 
                                 : showSuccess
@@ -412,11 +412,11 @@ export default function QuizModal({
                 )}
 
                 {currentQuestion.type === 'pilihan_ganda_kompleks' && (
-                  <div className="space-y-3">
-                    <p className="text-[10px] text-amber-400 font-extrabold uppercase tracking-wider mb-1">
+                  <div className="space-y-3 landscape:space-y-1.5">
+                    <p className="text-[10px] landscape:text-[9px] text-amber-400 font-extrabold uppercase tracking-wider mb-1">
                       ⚠️ PILIH SEMUA JAWABAN YANG BENAR (BISA LEBIH DARI SATU):
                     </p>
-                    <div className="space-y-2">
+                    <div className="space-y-2 landscape:space-y-1">
                       {currentQuestion.options.map((option, idx) => {
                         const isSelected = selectedComplex.includes(idx);
                         const isCorrectChoice = currentQuestion.correctAnswers?.includes(idx);
@@ -430,7 +430,7 @@ export default function QuizModal({
                             whileTap={!isAnswered ? { scale: 0.99 } : {}}
                             onClick={() => handleComplexToggle(idx)}
                             disabled={isAnswered}
-                            className={`w-full text-left p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border-2 font-semibold text-[11px] sm:text-xs transition-all flex items-center justify-between
+                            className={`w-full text-left p-2.5 landscape:p-1.5 sm:p-3.5 rounded-xl landscape:rounded-lg sm:rounded-2xl border-2 font-semibold text-[11px] landscape:text-[10px] sm:text-xs transition-all flex items-center justify-between
                               ${!!isAnswered 
                                 ? showSuccess
                                   ? 'bg-emerald-950/60 text-emerald-200 border-emerald-500'
@@ -470,7 +470,7 @@ export default function QuizModal({
                         whileTap={{ scale: 0.98 }}
                         onClick={handleSubmitComplex}
                         disabled={selectedComplex.length === 0}
-                        className="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 disabled:opacity-40 disabled:pointer-events-none text-white font-black text-xs rounded-xl shadow-lg uppercase tracking-wider transition-all"
+                        className="w-full py-3 landscape:py-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 disabled:opacity-40 disabled:pointer-events-none text-white font-black text-xs rounded-xl landscape:rounded-lg shadow-lg uppercase tracking-wider transition-all"
                       >
                         Kunci Jawaban ({selectedComplex.length} Dipilih)
                       </motion.button>
@@ -495,7 +495,7 @@ export default function QuizModal({
                           whileTap={!isAnswered ? { scale: 0.97 } : {}}
                           onClick={() => handleOptionClick(idx)}
                           disabled={isAnswered}
-                          className={`h-20 sm:h-32 rounded-2xl border-4 font-black text-sm sm:text-base transition-all flex flex-col items-center justify-center gap-1.5 sm:gap-2.5 relative
+                          className={`h-20 landscape:h-12 sm:h-32 rounded-2xl landscape:rounded-xl border-4 font-black text-sm landscape:text-xs sm:text-base transition-all flex flex-col items-center justify-center gap-1.5 landscape:gap-0.5 sm:gap-2.5 relative
                             ${!isAnswered 
                               ? isBenar
                                 ? 'bg-emerald-950/30 text-emerald-300 border-emerald-500/40 hover:bg-emerald-900/40 hover:border-emerald-400'
@@ -525,18 +525,18 @@ export default function QuizModal({
                 )}
 
                 {currentQuestion.type === 'menjodohkan' && (
-                  <div className="space-y-3">
-                    <p className="text-[10px] text-amber-400 font-extrabold uppercase tracking-wider mb-1">
+                  <div className="space-y-3 landscape:space-y-1.5">
+                    <p className="text-[10px] landscape:text-[9px] text-amber-400 font-extrabold uppercase tracking-wider mb-1">
                       🔗 JODOHKAN SETIAP ITEM DI KIRI DENGAN PASANGANNYA DI KANAN:
                     </p>
-                    <div className="bg-slate-950/30 border border-slate-800 rounded-2xl p-3 space-y-2.5">
+                    <div className="bg-slate-950/30 border border-slate-800 rounded-2xl landscape:rounded-xl p-3 landscape:p-1.5 space-y-2.5 landscape:space-y-1">
                       {currentQuestion.matchingLeft?.map((leftText, leftIdx) => {
                         const userVal = matchingAnswers[leftIdx];
                         const correctVal = currentQuestion.matchingPairs?.[leftIdx];
                         const isRowCorrect = isAnswered && userVal === correctVal;
 
                         return (
-                          <div key={leftIdx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-2 bg-slate-900/60 rounded-xl border border-slate-850">
+                          <div key={leftIdx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 landscape:gap-1 p-2 landscape:p-1 bg-slate-900/60 rounded-xl border border-slate-850">
                             <div className="flex items-center gap-2">
                               <span className="w-5.5 h-5.5 rounded bg-amber-500/20 text-amber-400 font-black text-[10px] flex items-center justify-center border border-amber-500/30">
                                 {leftIdx + 1}
@@ -592,7 +592,7 @@ export default function QuizModal({
                         whileTap={{ scale: 0.98 }}
                         onClick={handleSubmitMatching}
                         disabled={Object.keys(matchingAnswers).length !== (currentQuestion.matchingLeft?.length || 0)}
-                        className="w-full py-3 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 disabled:opacity-40 disabled:pointer-events-none text-slate-950 font-black text-xs rounded-xl shadow-lg uppercase tracking-wider transition-all"
+                        className="w-full py-3 landscape:py-1.5 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 disabled:opacity-40 disabled:pointer-events-none text-slate-950 font-black text-xs rounded-xl landscape:rounded-lg shadow-lg uppercase tracking-wider transition-all"
                       >
                         Kunci Jawaban ({Object.keys(matchingAnswers).length} dari {currentQuestion.matchingLeft?.length} Dijodohkan)
                       </motion.button>
@@ -601,11 +601,11 @@ export default function QuizModal({
                 )}
 
                 {currentQuestion.type === 'drag_drop' && (
-                  <div className="space-y-3">
-                    <p className="text-[10px] text-amber-400 font-extrabold uppercase tracking-wider mb-1">
+                  <div className="space-y-3 landscape:space-y-1.5">
+                    <p className="text-[10px] landscape:text-[9px] text-amber-400 font-extrabold uppercase tracking-wider mb-1">
                       ↕️ URUTKAN ITEM BERIKUT SECARA LOGIS:
                     </p>
-                    <div className="space-y-2">
+                    <div className="space-y-2 landscape:space-y-1">
                       {dragOrder.map((itemOriginalIdx, pos) => {
                         const isCorrectPos = isAnswered && itemOriginalIdx === currentQuestion.correctOrder?.[pos];
 
@@ -613,7 +613,7 @@ export default function QuizModal({
                           <motion.div
                             layout
                             key={itemOriginalIdx}
-                            className={`p-2.5 rounded-xl border-2 transition-all flex items-center justify-between gap-2
+                            className={`p-2.5 landscape:p-1.5 rounded-xl landscape:rounded-lg border-2 transition-all flex items-center justify-between gap-2
                               ${!isAnswered 
                                 ? 'bg-slate-800/60 border-slate-700 text-slate-200' 
                                 : isCorrectPos
@@ -631,7 +631,7 @@ export default function QuizModal({
                                 }`}>
                                 {pos + 1}
                               </span>
-                              <span className="text-[11px] font-bold leading-relaxed">{currentQuestion.dragItems?.[itemOriginalIdx]}</span>
+                              <span className="text-[11px] landscape:text-[10px] font-bold leading-relaxed">{currentQuestion.dragItems?.[itemOriginalIdx]}</span>
                             </div>
 
                             {/* Reordering actions */}
@@ -641,7 +641,7 @@ export default function QuizModal({
                                   type="button"
                                   disabled={pos === 0}
                                   onClick={() => handleDragShift(pos, 'up')}
-                                  className="w-7 h-7 rounded bg-slate-700 hover:bg-slate-600 text-white flex items-center justify-center font-bold text-xs transition disabled:opacity-30 disabled:pointer-events-none"
+                                  className="w-7 h-7 landscape:w-5.5 landscape:h-5.5 rounded bg-slate-700 hover:bg-slate-600 text-white flex items-center justify-center font-bold text-xs landscape:text-[10px] transition disabled:opacity-30 disabled:pointer-events-none"
                                   title="Pindahkan ke atas"
                                 >
                                   ▲
@@ -650,7 +650,7 @@ export default function QuizModal({
                                   type="button"
                                   disabled={pos === dragOrder.length - 1}
                                   onClick={() => handleDragShift(pos, 'down')}
-                                  className="w-7 h-7 rounded bg-slate-700 hover:bg-slate-600 text-white flex items-center justify-center font-bold text-xs transition disabled:opacity-30 disabled:pointer-events-none"
+                                  className="w-7 h-7 landscape:w-5.5 landscape:h-5.5 rounded bg-slate-700 hover:bg-slate-600 text-white flex items-center justify-center font-bold text-xs landscape:text-[10px] transition disabled:opacity-30 disabled:pointer-events-none"
                                   title="Pindahkan ke bawah"
                                 >
                                   ▼
@@ -680,7 +680,7 @@ export default function QuizModal({
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={handleSubmitDragDrop}
-                        className="w-full py-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-black text-xs rounded-xl shadow-lg uppercase tracking-wider transition-all"
+                        className="w-full py-3 landscape:py-1.5 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-black text-xs rounded-xl landscape:rounded-lg shadow-lg uppercase tracking-wider transition-all"
                       >
                         Kunci Jawaban & Cek Urutan
                       </motion.button>
@@ -689,15 +689,15 @@ export default function QuizModal({
                 )}
               </div>
 
-                <div className="md:col-span-2 w-full mt-4">
+                <div className="col-span-1 landscape:col-span-2 sm:col-span-2 w-full mt-4 landscape:mt-1.5">
                   <AnimatePresence>
                     {isAnswered && (
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="p-4 bg-slate-850/95 rounded-2xl border border-slate-700/80 text-xs text-slate-300 leading-relaxed text-left overflow-y-auto scrollbar-thin"
+                        className="p-4 landscape:p-2.5 bg-slate-850/95 rounded-2xl landscape:rounded-xl border border-slate-700/80 text-xs landscape:text-[10px] text-slate-300 leading-relaxed text-left overflow-y-auto scrollbar-thin"
                       >
-                        <div className="flex items-center gap-1.5 mb-1.5 font-bold text-amber-400">
+                        <div className="flex items-center gap-1.5 mb-1.5 landscape:mb-0.5 font-bold text-amber-400">
                           <span>💡 Penjelasan Edukasi:</span>
                         </div>
                         {(() => {
@@ -705,31 +705,31 @@ export default function QuizModal({
                           let userFeedback = "";
 
                           if (currentQuestion.type === 'pilihan_ganda_kompleks') {
-                            const correctList = currentQuestion.correctAnswers || [];
-                            isCorrect = selectedComplex.length === correctList.length &&
-                              selectedComplex.every(val => correctList.includes(val));
-                            const correctTexts = correctList.map(idx => currentQuestion.options[idx]).join(", ");
-                            userFeedback = `Jawaban yang benar adalah: ${correctTexts}.`;
+                             const correctList = currentQuestion.correctAnswers || [];
+                             isCorrect = selectedComplex.length === correctList.length &&
+                               selectedComplex.every(val => correctList.includes(val));
+                             const correctTexts = correctList.map(idx => currentQuestion.options[idx]).join(", ");
+                             userFeedback = `Jawaban yang benar adalah: ${correctTexts}.`;
                           } else if (currentQuestion.type === 'benar_salah') {
-                            isCorrect = selectedOption === currentQuestion.answer;
-                            userFeedback = `Jawaban yang benar adalah: ${currentQuestion.options[currentQuestion.answer]}.`;
+                             isCorrect = selectedOption === currentQuestion.answer;
+                             userFeedback = `Jawaban yang benar adalah: ${currentQuestion.options[currentQuestion.answer]}.`;
                           } else if (currentQuestion.type === 'menjodohkan') {
-                            const pairs = currentQuestion.matchingPairs || {};
-                            isCorrect = !!currentQuestion.matchingLeft?.every((_, idx) => 
-                              matchingAnswers[idx] === pairs[idx]
-                            );
-                            userFeedback = "Sandingkan pasangan yang tepat untuk mengasah pemahamanmu.";
+                             const pairs = currentQuestion.matchingPairs || {};
+                             isCorrect = !!currentQuestion.matchingLeft?.every((_, idx) => 
+                               matchingAnswers[idx] === pairs[idx]
+                             );
+                             userFeedback = "Sandingkan pasangan yang tepat untuk mengasah pemahamanmu.";
                           } else if (currentQuestion.type === 'drag_drop') {
-                            const correctOrder = currentQuestion.correctOrder || [];
-                            isCorrect = dragOrder.length === correctOrder.length &&
-                              dragOrder.every((val, idx) => val === correctOrder[idx]);
-                            const orderTexts = correctOrder.map(idx => currentQuestion.dragItems?.[idx]).join(" → ");
-                            userFeedback = `Urutan yang benar adalah: ${orderTexts}.`;
+                             const correctOrder = currentQuestion.correctOrder || [];
+                             isCorrect = dragOrder.length === correctOrder.length &&
+                               dragOrder.every((val, idx) => val === correctOrder[idx]);
+                             const orderTexts = correctOrder.map(idx => currentQuestion.dragItems?.[idx]).join(" → ");
+                             userFeedback = `Urutan yang benar adalah: ${orderTexts}.`;
                           } else {
-                            isCorrect = selectedOption === currentQuestion.answer;
-                            userFeedback = selectedOption === -1 
-                              ? `Waktu habis! Jawaban yang benar adalah: ${currentQuestion.options[currentQuestion.answer]}.`
-                              : `Jawaban yang benar adalah: ${currentQuestion.options[currentQuestion.answer]}.`;
+                             isCorrect = selectedOption === currentQuestion.answer;
+                             userFeedback = selectedOption === -1 
+                               ? `Waktu habis! Jawaban yang benar adalah: ${currentQuestion.options[currentQuestion.answer]}.`
+                               : `Jawaban yang benar adalah: ${currentQuestion.options[currentQuestion.answer]}.`;
                           }
 
                           return (
@@ -739,8 +739,8 @@ export default function QuizModal({
                               ) : (
                                 <span className="text-red-400 font-bold mr-1">Kurang tepat. 💡</span>
                               )}
-                              <span className="text-slate-300 block mt-1 font-medium">{userFeedback}</span>
-                              <span className="text-slate-400 block mt-2 italic">{currentQuestion.explanation}</span>
+                              <span className="text-slate-300 block mt-1 landscape:mt-0.5 font-medium">{userFeedback}</span>
+                              <span className="text-slate-400 block mt-2 landscape:mt-1 italic">{currentQuestion.explanation}</span>
                             </div>
                           );
                         })()}
