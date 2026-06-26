@@ -391,68 +391,6 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-300 via-sky-100 to-sky-50 text-slate-800 font-sans pb-16 selection:bg-amber-400 selection:text-slate-900 relative overflow-hidden">
       
-      {/* LANDSCAPE ORIENTATION REQUIRED OVERLAY FOR MOBILE */}
-      <div className="fixed inset-0 bg-slate-950/95 backdrop-blur-lg z-[9999] flex flex-col items-center justify-center p-6 text-center lg:hidden portrait:flex landscape:hidden">
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          className="max-w-xs bg-slate-900 border-4 border-amber-500 rounded-3xl p-6 shadow-2xl relative"
-        >
-          {/* Animated phone rotation visual */}
-          <div className="relative w-24 h-24 mx-auto mb-6 flex items-center justify-center">
-            <div className="absolute inset-0 bg-amber-500/10 rounded-full animate-ping" style={{ animationDuration: '3s' }} />
-            <motion.div
-              animate={{ rotate: [0, 90, 90, 0, 0] }}
-              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-              className="text-6xl text-amber-500 relative z-10"
-            >
-              📱
-            </motion.div>
-            <div className="absolute bottom-1 right-1 text-2xl animate-pulse">🔄</div>
-          </div>
-
-          <h3 className="text-xl font-black text-amber-400 mb-2 font-display">
-            Putar Layar ke Lanskap
-          </h3>
-          <p className="text-xs text-slate-300 leading-relaxed mb-6 font-semibold">
-            Game petualangan ini dirancang khusus untuk dimainkan dalam mode <strong className="text-amber-300">Lanskap (Tidur)</strong> agar semua tombol dan tulisan terlihat jelas serta nyaman dimainkan.
-          </p>
-
-          <button
-            onClick={async () => {
-              audio.resume();
-              audio.playClick();
-              try {
-                // Request fullscreen
-                if (document.documentElement.requestFullscreen) {
-                  await document.documentElement.requestFullscreen();
-                } else if ((document.documentElement as any).webkitRequestFullscreen) {
-                  await (document.documentElement as any).webkitRequestFullscreen();
-                } else if ((document.documentElement as any).msRequestFullscreen) {
-                  await (document.documentElement as any).msRequestFullscreen();
-                }
-                
-                // Lock screen to landscape
-                if (window.screen.orientation && (window.screen.orientation as any).lock) {
-                  await (window.screen.orientation as any).lock('landscape').catch((e: any) => {
-                    console.log('Orientation lock rejected, please rotate manually', e);
-                  });
-                }
-              } catch (err) {
-                console.warn('Fullscreen request failed', err);
-              }
-            }}
-            className="w-full py-3 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 font-black text-xs rounded-xl shadow-lg uppercase tracking-wider transition-all transform hover:scale-105 active:scale-95 animate-pulse"
-          >
-            Aktifkan Layar Penuh & Lanskap
-          </button>
-          
-          <p className="text-[10px] text-slate-500 mt-3 font-medium">
-            *Pastikan fitur "Rotasi Otomatis" di HP Anda dalam kondisi menyala.
-          </p>
-        </motion.div>
-      </div>
-
       {/* MAGICAL AMBIENT SPARKS & LIGHT FLIES */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-40">
         <div className="absolute top-[12%] left-[10%] w-3 h-3 bg-indigo-400 rounded-full blur-[1px] animate-ping" style={{ animationDuration: '3.5s' }} />
